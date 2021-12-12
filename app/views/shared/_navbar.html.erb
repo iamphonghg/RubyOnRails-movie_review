@@ -9,6 +9,7 @@
   </div>
   <div class="flex flex-row items-center space-x-2 text-white font-semibold">
     <% if user_signed_in? %>
+      <span>Hello, <%= current_user.email %></span>
       <%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: 'px-4 py-2 hover:bg-white hover:text-blue-900' %>
     <% else %>
       <%= link_to 'SIGN UP', new_user_registration_path, class: 'px-4 py-2 hover:bg-white hover:text-blue-900' %>

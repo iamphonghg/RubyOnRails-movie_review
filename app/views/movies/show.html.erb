@@ -24,6 +24,12 @@
       <div class="text-gray-500 text-lg">
           <%= @movie.overview %>
       </div>
+      <div class="font-semibold">
+        Added by
+        <span class="text-blue-700">
+          <%= @movie.user.email %>
+        </span>
+      </div>
     </div>
   </div>
 </div>

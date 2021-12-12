@@ -1,0 +1,10 @@
+<%= form_with model: [ @movie, @movie.reviews.build ] do |form| %>
+  <div class="flex flex-row items-center space-x-2 justify-end">
+    <div class="mt-2">
+      <%= form.text_area :body, class: 'w-96 bg-gray-100 outline-none rounded' %>
+    </div>
+    <p>
+      <%= form.submit "ADD REVIEW", class: 'px-4 py-2 bg-blue-900 text-white hover:bg-blue-800 cursor-pointer font-semibold' %>
+    </p>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<div class="mx-auto mt-20" style="width: 800px;">
+<div class="mx-auto mt-20 flex flex-col items-end" style="width: 800px;">
   <div class="flex flex-row bg-white">
     <div class="w-1/4 h-48 flex">
       <% if @movie.image.attached? %>
@@ -19,7 +19,7 @@
             <%= @movie.year %>
           </span>
         </div>
-        <%= link_to "EDIT", edit_movie_path(@movie), class: 'px-4 py-2 text-white bg-blue-900 hover:bg-blue-800' %>
+        <%= link_to "EDIT", edit_movie_path(@movie), class: 'font-semibold px-4 py-2 text-white bg-blue-900 hover:bg-blue-800' %>
       </div>
       <div class="text-gray-500 text-lg">
           <%= @movie.overview %>
@@ -31,5 +31,22 @@
         </span>
       </div>
     </div>
+  </div>
+  <div class="mt-4">
+    <%= render "reviews/form" %>
+  </div>
+
+  <div class="w-3/4 grid grid-cols-1 space-y-2 mt-4">
+    <span class="font-bold text-blue-900 border-b-2 text-3xl border-blue-900">Reviews</span>
+    <% @movie.reviews.each do |review| %>
+      <div class="flex flex-col bg-white px-4 py-4 justify-between">
+        <div class="text-lg">
+          <%= review.body %>
+        </div>
+        <div class="flex justify-end font-bold text-blue-900">
+          <%= review&.user&.email %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

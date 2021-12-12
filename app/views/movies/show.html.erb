@@ -9,14 +9,17 @@
         </div>
       <% end %>
     </div>
-    <div class="w-3/4 flex flex-col py-4 pr-4">
-      <div>
-        <span class="text-blue-900 font-bold text-3xl">
-          <%= @movie.title %>
-        </span>
-        <span class="text-gray-500 text-lg">
-          <%= @movie.year %>
-        </span>
+    <div class="w-3/4 flex flex-col py-4 pr-4 space-y-2">
+      <div class="flex flex-row justify-between">
+        <div>
+          <span class="text-blue-900 font-bold text-3xl">
+            <%= @movie.title %>
+          </span>
+          <span class="text-gray-500 text-lg">
+            <%= @movie.year %>
+          </span>
+        </div>
+        <%= link_to "EDIT", edit_movie_path(@movie), class: 'px-4 py-2 text-white bg-blue-900 hover:bg-blue-800' %>
       </div>
       <div class="text-gray-500 text-lg">
           <%= @movie.overview %>

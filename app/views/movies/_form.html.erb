@@ -1,36 +1,49 @@
 <%= form_with model: movie do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% @movie.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
+  <div class="flex flex-row justify-between space-x-2">
+    <div class="w-1/2">
+      <%= form.label :title, class: 'text-2xl text-blue-900' %><br>
+      <%= form.text_field :title, class: 'w-full bg-gray-100 outline-none rounded' %>
+      <% @movie.errors.full_messages_for(:title).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
+    <div class="w-1/2">
+      <%= form.label :year, class: 'text-2xl text-blue-900' %><br>
+      <%= form.text_field :year, class: 'w-full bg-gray-100 outline-none rounded' %>
+      <% @movie.errors.full_messages_for(:year).each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= form.label :year %><br>
-    <%= form.text_field :year %>
-    <% @movie.errors.full_messages_for(:year).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-  <div>
-    <%= form.label :overview %><br>
-    <%= form.text_area :overview %>
+  <div class="mt-2">
+    <%= form.label :overview, class: 'text-2xl text-blue-900' %><br>
+    <%= form.text_area :overview, class: 'w-full bg-gray-100 outline-none rounded' %>
     <% @movie.errors.full_messages_for(:overview).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
+  <div class="flex mt-2 space-x-2">
     <% if movie.image.attached? %>
-      <%= image_tag movie_image, style: "width:200px; display: block" %>
+      <div class="w-1/2">
+        <%= image_tag movie.image %>
+      </div>
+    <% else %>
+      <div class="w-1/2 flex m-auto justify-center">
+        Image here
+      </div>
     <% end %>
-
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+    <div class="w-1/2">
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="flex justify-center">
+    <% if current_page?(:controller => 'movies', :action => 'new') %>
+      <%= form.submit "ADD MOVIE", class: 'font-bold mt-4 px-4 py-2 text-white bg-blue-900 hover:bg-blue-800' %>
+    <% else %>
+      <%= form.submit "SAVE", class: 'font-bold mt-4 px-4 py-2 text-white bg-blue-900 hover:bg-blue-800'%>
+    <% end %>
   </div>
 <% end %>

@@ -1,4 +1,7 @@
 class MoviesController < ApplicationController
+
+  before_action :authenticate_user!, only: [:new, :edit]
+
   def index
     @movies = Movie.all
   end
@@ -13,6 +16,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    @movie.user_id = current_user.id
 
     if @movie.save
       redirect_to @movie
@@ -23,6 +27,7 @@ class MoviesController < ApplicationController
 
   def edit
     @movie = Movie.find(params[:id])
+    redirect_to root_path, notice: "You don't have permission to do that!" unless current_user.id == @movie.user_id
   end
 
   def update

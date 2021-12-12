@@ -1,11 +1,17 @@
-<h1>Movies</h1>
+<div class="ml-40 mr-40">
+  <h1 class="flex mt-8 font-bold text-blue-900 flex-row justify-between">
+    <span class="border-b-2 text-3xl border-blue-900">
+      Movies
+    </span>
+    <a href="" class="text-white px-4 py-2 bg-blue-900 hover:bg-blue-800">NEW MOVIE</a>
+  </h1>
+  <div class="grid gap-4 grid-cols-1 mt-8">
+    <% @movies.each do |movie| %>
+      <div>
+        <%= link_to movie.title, movie %>
+      </div>
+    <% end %>
+  </div>
 
-<ul>
-  <% @movies.each do |movie| %>
-    <li>
-      <%= link_to movie.title, movie %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to "New Movie", new_movie_path %>
+  <%= link_to "New Movie", new_movie_path %>
+</div>

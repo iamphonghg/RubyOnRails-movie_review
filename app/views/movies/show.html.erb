@@ -1,3 +1,6 @@
 <h1><%= @movie.title %></h1>
 <p><%= @movie.year %></p>
 <p><%= @movie.overview %></p>
+<% if @movie.image.attached? %>
+  <%= image_tag @movie.image, style: "width:200px; display: block" %>
+<% end %>

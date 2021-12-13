@@ -1,0 +1,33 @@
+<div class="mx-auto" style="width: 800px;">
+  <h1 class="flex mt-8 font-bold text-blue-900 flex-row justify-between">
+    <span class="border-b-2 text-3xl border-blue-900">
+      Articles
+    </span>
+    <%= link_to "NEW ARTICLE", new_article_path, class: 'text-white px-4 py-2 bg-blue-900 hover:bg-blue-800' %>
+  </h1>
+  <div class="grid gap-4 grid-cols-1 mt-8 pb-20 mx-auto">
+    <% @articles.each do |article| %>
+      <%= link_to article do %>
+        <div class="flex flex-row bg-white hover:shadow-lg">
+          <div class="w-1/4 h-48 flex">
+            <% if article.image.attached? %>
+              <%= image_tag article.image, class: 'h-full px-4 py-4' %>
+            <% else %>
+              <div class="text-center m-auto px-3 py-3 text-blue-600 font-bold">
+                * No image yet
+              </div>
+            <% end %>
+          </div>
+          <div class="w-3/4 flex flex-col py-4 pr-4">
+            <span class="text-blue-900 font-bold text-3xl">
+              <%= article.title %>
+            </span>
+            <div class="text-gray-500 text-lg line-clamp-4">
+                <%= article.body %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

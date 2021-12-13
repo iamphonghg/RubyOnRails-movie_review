@@ -1,0 +1,30 @@
+<div class="mx-auto mt-20 flex flex-col items-end" style="width: 800px;">
+  <div class="flex flex-row bg-white w-full">
+    <div class="w-1/4 h-48 flex">
+      <% if @article.image.attached? %>
+        <%= image_tag @article.image, class: 'h-full px-4 py-4' %>
+      <% else %>
+        <div class="text-center m-auto px-3 py-3 text-blue-600 font-bold">
+          * No image yet
+        </div>
+      <% end %>
+    </div>
+    <div class="w-3/4 flex flex-col py-4 pr-4 space-y-2">
+      <div class="flex flex-row justify-between">
+        <div class="text-blue-900 font-bold text-3xl">
+          <%= @article.title %>
+        </div>
+        <%= link_to "EDIT", edit_article_path(@article), class: 'font-semibold px-4 py-2 text-white bg-blue-900 hover:bg-blue-800' %>
+      </div>
+      <div class="text-gray-500 text-lg">
+          <%= @article.body %>
+      </div>
+      <div class="font-semibold">
+        Added by
+        <span class="text-blue-700">
+          <%= @article.user.email %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
